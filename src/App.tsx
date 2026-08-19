@@ -1310,11 +1310,11 @@ export default function App() {
       setAccessToken(result.accessToken);
       setRefreshToken(result.refreshToken || '');
       setUser(result.user);
-      setPassword('');
       setNotice(mode === 'signup' ? 'Account created and signed in.' : 'Signed in.');
     } catch (requestError) {
       setError(errorText(requestError, (mode === 'signup' ? 'Sign up' : 'Login') + ' failed.'));
     } finally {
+      setPassword('');
       setBusy(false);
     }
   };
@@ -2048,9 +2048,31 @@ export default function App() {
           <p style={{ fontSize: '0.85rem', color: '#9f9887' }}>Sign in to participate in live screening chat and collaborative art.</p>
           <form onSubmit={submitAuth} className="form-grid" style={{ width: '100%', maxWidth: '320px', margin: '1.25rem auto 0 auto', textAlign: 'left' }}>
             <label htmlFor="popout-email">Email</label>
-            <input id="popout-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            <label htmlFor="popout-pwd">Password</label>
-            <input id="popout-pwd" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <input
+              id="popout-email"
+              type="email"
+              autoComplete="email"
+              spellCheck={false}
+              autoCapitalize="none"
+              autoCorrect="off"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <label htmlFor="popout-pwd">Password (min 12 characters)</label>
+            <input
+              id="popout-pwd"
+              type="password"
+              autoComplete="current-password"
+              minLength={12}
+              maxLength={128}
+              spellCheck={false}
+              autoCapitalize="none"
+              autoCorrect="off"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
             <button type="submit" className="button-primary" style={{ marginTop: '0.5rem' }} disabled={busy}>
               {busy ? 'Signing in…' : 'Sign In'}
             </button>
@@ -2320,6 +2342,9 @@ export default function App() {
                       id="email"
                       type="email"
                       autoComplete="email"
+                      spellCheck={false}
+                      autoCapitalize="none"
+                      autoCorrect="off"
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
                       required
@@ -2330,17 +2355,24 @@ export default function App() {
                         <input
                           id="nickname"
                           autoComplete="nickname"
+                          spellCheck={false}
+                          maxLength={48}
                           value={nickname}
                           onChange={(event) => setNickname(event.target.value)}
                           required
                         />
                       </>
                     )}
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Password (min 12 characters)</label>
                     <input
                       id="password"
                       type="password"
                       autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
+                      minLength={12}
+                      maxLength={128}
+                      spellCheck={false}
+                      autoCapitalize="none"
+                      autoCorrect="off"
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
                       required
