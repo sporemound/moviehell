@@ -2,7 +2,7 @@
 
 Aggregation Hub is a barebones, general-purpose aggregation starter. It combines a small React client with a Cloudflare Worker, D1 persistence, and a SQLite-backed Durable Object for room-scoped realtime coordination. The interface is intentionally unbranded.
 
-This is a starter, not a production-ready service. Review [HARDENING.md](./HARDENING.md) and [SECURITY.md](./SECURITY.md) before exposing it publicly.
+This is a starter, not a production-ready service. Review [PRIVACY_BOUNDARIES.md](./PRIVACY_BOUNDARIES.md), [HARDENING.md](./HARDENING.md), and [SECURITY.md](./SECURITY.md) before exposing it publicly.
 
 ## Local setup
 

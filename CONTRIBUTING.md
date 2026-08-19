@@ -22,7 +22,7 @@ npm run validate
 - Keep changes scoped and easy to review.
 - Add or update tests and documentation when behavior changes.
 - Regenerate `worker-configuration.d.ts` after changing bindings.
-- Do not commit secrets, resource IDs, local state, logs, generated scan output, or personal metadata.
+- Strictly adhere to [PRIVACY_BOUNDARIES.md](./PRIVACY_BOUNDARIES.md): do not commit secrets, real email addresses, personal handles, resource IDs, local state, logs, or personal metadata.
 - Describe migrations, compatibility changes, and rollback requirements.
 
 ## Security-sensitive work

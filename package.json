@@ -21,8 +21,9 @@
     "typecheck:pages": "tsc --noEmit -p tsconfig.pages.json",
     "deploy": "npm run build:frontend && wrangler deploy --config wrangler.local.jsonc",
     "pages:deploy": "npm run build:frontend && wrangler deploy --config wrangler.local.jsonc && wrangler pages deploy --cwd pages --project-name movie-hell --branch master",
+    "privacy:scan": "node scripts/privacy-scan.mjs",
     "audit": "npm audit --audit-level=high",
-    "validate": "npm run typecheck && npm run worker:types:check && npm run build:frontend && npm run worker:dry-run && npm run audit"
+    "validate": "npm run privacy:scan && npm run typecheck && npm run worker:types:check && npm run build:frontend && npm run worker:dry-run && npm run audit"
   },
   "dependencies": {
     "hls.js": "^1.7.0",
