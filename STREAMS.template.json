@@ -1,0 +1,26 @@
+{
+  "comment": "TEMPLATE: Optional stream catalog template with generic examples. Channels should be registered via the Admin Dashboard.",
+  "owncast": [
+    {
+      "instance": "stream.example.org",
+      "name": "Community Stream",
+      "description": "Example Owncast stream",
+      "embedUrl": "https://stream.example.org/embed/video"
+    }
+  ],
+  "picarto": [
+    {
+      "channel": "example_artist",
+      "owner": "ExampleArtist",
+      "description": "Example Picarto stream",
+      "embedUrl": "https://picarto.tv/streampopout/example_artist/public"
+    }
+  ],
+  "kick": [
+    {
+      "channel": "example_gamer",
+      "owner": "ExampleGamer",
+      "description": "Example Kick stream"
+    }
+  ]
+}

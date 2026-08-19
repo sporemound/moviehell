@@ -1,0 +1,42 @@
+{
+  "name": "aggregation-hub",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "npm run typecheck && npm run build:frontend",
+    "build:frontend": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "worker:dev": "wrangler dev --local --port 8787",
+    "worker:typegen": "wrangler types --include-runtime false",
+    "worker:types:check": "wrangler types --include-runtime false --check",
+    "worker:dry-run": "wrangler deploy --dry-run",
+    "typecheck": "npm run typecheck:frontend && npm run typecheck:worker && npm run typecheck:pages",
+    "typecheck:frontend": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.node.json",
+    "typecheck:worker": "tsc --noEmit -p tsconfig.worker.json",
+    "typecheck:pages": "tsc --noEmit -p tsconfig.pages.json",
+    "deploy": "npm run build:frontend && wrangler deploy --config wrangler.local.jsonc",
+    "pages:deploy": "npm run build:frontend && wrangler deploy --config wrangler.local.jsonc && wrangler pages deploy --cwd pages --project-name movie-hell --branch master",
+    "audit": "npm audit --audit-level=high",
+    "validate": "npm run typecheck && npm run worker:types:check && npm run build:frontend && npm run worker:dry-run && npm run audit"
+  },
+  "dependencies": {
+    "hls.js": "^1.7.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260818.1",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.1",
+    "wrangler": "^4.123.0"
+  }
+}

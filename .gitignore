@@ -1,0 +1,39 @@
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+.vite/
+*.tsbuildinfo
+
+# Cloudflare and local configuration
+.wrangler/
+wrangler.local.jsonc
+wrangler.deploy.jsonc
+.dev.vars*
+.env*
+
+# Logs and security-scan output
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.sarif
+.scannerwork/
+.semgrep/
+security-scan-results/
+
+# Local agent state
+.agents/
+.codex/
+
+# Operating system and editor metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.code-workspace
+*.suo
+*.user
+*.swp
+*.swo

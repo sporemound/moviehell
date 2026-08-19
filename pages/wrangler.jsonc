@@ -1,0 +1,13 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "movie-hell",
+  "pages_build_output_dir": "../dist",
+  "compatibility_date": "2026-08-18",
+  "compatibility_flags": ["nodejs_compat"],
+  "services": [
+    {
+      "binding": "MOVIE_HELL_BACKEND",
+      "service": "movie-hell"
+    }
+  ]
+}
