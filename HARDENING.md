@@ -7,7 +7,10 @@ Aggregation Hub is an early-stage starter. It has not received an independent se
 - Review every route for authentication, object-level authorization, input limits, and non-disclosing errors.
 - Use short-lived, revocable sessions; protect refresh credentials at rest; and test account recovery and lockout behavior.
 - Restrict HTTP and WebSocket origins to an explicit production allowlist. Add edge rate limits and abuse controls.
-- Keep secrets in Cloudflare secret bindings. Never place credentials or production identifiers in source, logs, client bundles, or committed configuration.
+- Enforce strict 12-Factor App configuration (Factor III: Config):
+  - Store all deploy-specific config in the environment, never in source code.
+  - Keep secrets in Cloudflare secret bindings (`wrangler secret put`). Never place credentials, API tokens, personal email addresses, or production resource identifiers in source, logs, client bundles, or committed configuration.
+  - Maintain template configurations (`wrangler.jsonc`, `.env.example`) with zero/placeholder IDs in source control; keep local overrides (`wrangler.local.jsonc`, `.env.local`) strictly ignored in `.gitignore`.
 - Confirm that moderation thresholds, administrator membership, quota updates, and concurrent votes fail closed.
 - Define retention and deletion policies for accounts, messages, moderation records, sessions, and audit events.
 - Back up D1, rehearse migrations and rollback, and verify Durable Object upgrade behavior in a non-production environment.

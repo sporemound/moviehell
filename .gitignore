@@ -11,6 +11,7 @@ wrangler.local.jsonc
 wrangler.deploy.jsonc
 .dev.vars*
 .env*
+!.env.example
 
 # Logs and security-scan output
 *.log
